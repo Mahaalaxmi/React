@@ -5,7 +5,7 @@ import viteLogo from "/vite.svg";
 function App() {
   return (
     <>
-      <h1>Hello 2</h1>
+      <h1 className="text-red-600">Hello 2</h1>
     </>
   );
 }
