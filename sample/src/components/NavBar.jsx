@@ -1,8 +1,8 @@
-const NavBar = ({ appname }) => {
-  console.log(appname);
+const NavBar = (props) => {
+  console.log(props);
   return (
     <div className="w-full h-[3vh] grad-blue-bg text-white flex justify-center items-center">
-      {appname}
+      {props}
     </div>
   );
 };
