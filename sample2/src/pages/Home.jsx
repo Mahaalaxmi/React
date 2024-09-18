@@ -10,14 +10,16 @@ const Home = () => {
       <NavBar />
       <div className="flex flex-col md:flex-row px-7 py-20 justify-center items-center bg-blue-400 ">
         <div className="md:w-1/2 flex flex-col justify-center gap-2">
-          <h1 className="text-4xl font-bold font-[Poppins]">Hi,</h1>
-          <h1 className="text-4xl font-bold font-[Poppins]">
+          <h1 className="text-4xl font-bold font-[Poppins] flex justify-center items-center">
+            Hi,
+          </h1>
+          <h1 className="text-4xl font-bold font-[Poppins] flex justify-center items-center">
             I am Mahalakshmi
           </h1>
-          <p className="font-medium text-2xl font-[Poppins]">
+          <p className="font-medium text-2xl font-[Poppins] flex justify-center items-center">
             I am Good in Java,MySQL,HTML,CSS,TailWind CSS.
           </p>
-          <p className="font-medium text-2xl font-[Poppins]">
+          <p className="font-medium text-2xl font-[Poppins] flex justify-center items-center">
             I am Currently Learning MERN Stack
           </p>
           <div className="flex flex-col md:flex-row gap-3">
