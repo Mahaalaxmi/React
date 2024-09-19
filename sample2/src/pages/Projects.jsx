@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar";
 const Projects = () => {
   return (
     <>
-      <NavBar />
       <div className=" min-h-screen h-[80%] flex  flex-col px-9 bg-[#73d6d3]">
         <div className="flex justify-start items-start px-10 py-10">
           <h1 className="font-bold text-4xl text-white">Projects</h1>

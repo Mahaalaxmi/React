@@ -6,8 +6,7 @@ import NavBar from "../components/NavBar";
 const Home = () => {
   return (
     <>
-      <NavBar />
-      <div className="min-h-screen h-[80%] flex flex-col md:flex-row px-10 py-10 justify-center items-center bg-[#73d6d3] ">
+      <div className="min-h-screen h-[80%] flex flex-col md:flex-row px-10 py-10 justify-center items-center bg-[#73d6d3] overflow-hidden">
         <div className="md:w-1/2 flex justify-center items-center">
           <img
             src={ProfileImage}

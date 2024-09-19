@@ -10,11 +10,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route element={<WebLayout />}> */}
-          <Route path="/" element={<Home />} />
-          <Route path="/Projects" element={<Projects />} />
-          <Route path="/Contact" element={<Contact />} />
-          {/* </Route> */}
+          <Route element={<WebLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/Projects" element={<Projects />} />
+            <Route path="/Contact" element={<Contact />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

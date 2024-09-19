@@ -1,22 +1,21 @@
-import React from "react";
+import { Suspense } from "react";
 import NavBar from "../components/NavBar";
 import { Outlet } from "react-router-dom";
 
 const WebLayout = () => {
-  const isLoggedIn = "true";
+  const isloggedin = true;
+
   return (
-    // <>
-    // <NavBar/>
-    // {isLoggedIn ? (
-    //     <Outlet/>
-    // ):{
-    //     <>
-
-    //     </>
-    // }}
-
-    // </>
-    <>Hello</>
+    <>
+      <NavBar />
+      {isloggedin ? (
+        <Suspense fallback={"loading"}>
+          <Outlet />
+        </Suspense>
+      ) : (
+        <>Login to access data</>
+      )}
+    </>
   );
 };
 
