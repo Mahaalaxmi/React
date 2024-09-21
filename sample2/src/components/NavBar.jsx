@@ -1,4 +1,4 @@
-import { Cross, User2 } from "lucide-react";
+import { Cross, User2, XIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useState, useRef } from "react";
 
@@ -37,7 +37,7 @@ const NavBar = () => {
   const [visible, setvisible] = useState(false);
   return (
     <>
-      <div className="w-full h-[4rem] bg-[#0497c2] shadow-md shadow-blue-700 text-white flex justify-center items-center rounded-sm">
+      <div className="w-full h-[3rem] bg-[#0497c2] shadow-md shadow-blue-700 text-white flex justify-center items-center rounded-sm">
         <div className="w-[80%] h-full flex justify-center items-center flex-row max-w-7xl">
           <div className="w-1/2 flex h-full justify-start items-center font-bold text-xl text-white">
             Mahalakshmi K
@@ -52,6 +52,7 @@ const NavBar = () => {
                 </NavLink>
               ))}
             </ul>
+
             <User2
               className="h-9 w-10 text-white rounded-full border-2 border-white hover:bg-white  hover:border-blue-500 hover:text-blue-500"
               onClick={() => setvisible(true)}
@@ -66,7 +67,7 @@ const NavBar = () => {
               <div className="w-full h-[15%] flex flex-row justify-start px-10 items-center border-2 text-white bg-blue-500 text-2xl font-bold py-6">
                 <div className="w-1/2 ">Login</div>
                 <div className="w-1/2 flex justify-end">
-                  <Cross onClick={() => setvisible(!visible)} />
+                  <XIcon onClick={() => setvisible(!visible)} />
                 </div>
               </div>
               <div className="w-full h-[85%] flex flex-row justify-center items-center">
