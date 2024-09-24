@@ -1,8 +1,8 @@
-import { Plus } from "lucide-react";
-import React, { useRef, useState } from "react";
+import { Check, MessageCircleWarning, Plus } from "lucide-react";
+import { useRef, useState } from "react";
 import { addProject } from "../services/api";
 import { Toaster, toast } from "sonner";
-const AddComponent = () => {
+const AddComponent = ({ fetchprojects }) => {
   const titleref = useRef(null);
   const descref = useRef(null);
   const linkref = useRef(null);
@@ -21,9 +21,20 @@ const AddComponent = () => {
       console.log(response.status);
       if (response.status === 201) {
         console.log("added");
+        toast("Project added !", {
+          className:
+            "bg-gradient-to-r from-green-500 to-lime-500 rounded-lg shadow-lg text-white p-3 flex gap-5 text-lg font-bold",
+          icon: <Check />,
+        });
+        fetchprojects();
       }
     } catch (error) {
       toast.error(error);
+      toast("Error", {
+        className:
+          "bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg shadow-lg text-white p-3 flex gap-5 text-lg font-bold",
+        icon: <MessageCircleWarning />,
+      });
     }
     setvisible(false);
   };
@@ -33,17 +44,16 @@ const AddComponent = () => {
     <>
       <button
         onClick={() => setvisible(true)}
-        className="flex justify-center items-center text-white bg-blue-500 px-2 py-1 rounded-sm m-3"
+        className="flex justify-center items-center text-white bg-blue-500 p-1 rounded-sm"
       >
-        Add
-        <Plus className="h-6 w-6 ml-2" />
+        <Plus className="h-8 w-8" />
       </button>
       {visible && (
         <>
           <div className="h-screen w-screen absolute top-0 left-0 bg-black/20 flex justify-center items-center z-50">
-            <div className=" h-[80%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
-              <div className="w-full h-[10%] flex flex-row justify-start px-10 items-center border-2 text-blue-500 bg-white text-xl font-bold shadow-sm">
-                <div className="w-1/2 ">Add Project</div>
+            <div className=" h-[50%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
+              <div className="w-full h-[15%] flex flex-row justify-start px-10 items-center border-2 text-blue-500 bg-white text-xl font-bold shadow-sm">
+                <div className="w-1/2">Add Project</div>
                 <div className="w-1/2 flex justify-end">
                   <label
                     className="relative inline-flex items-center cursor-pointer"
@@ -56,7 +66,7 @@ const AddComponent = () => {
               </div>
               <div className="w-full h-[85%] flex flex-row justify-center items-center">
                 <form
-                  className="w-[80%] h-[70%] flex flex-col justify-center items-center gap-4"
+                  className="w-[80%] h-[80%] flex flex-col justify-center items-center gap-4"
                   onSubmit={handleAdd}
                 >
                   <input
@@ -97,7 +107,7 @@ const AddComponent = () => {
                   />
                   <button
                     type="submit"
-                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-sm text-md px-5 py-2.5 text-center w-full h-[15%] mt-4"
+                    className="text-white bg-gradient-to-r from-purple-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-sm text-md px-5 py-2.5 text-center w-full h-[15%] mt-4"
                   >
                     Add Project
                   </button>
@@ -105,9 +115,9 @@ const AddComponent = () => {
               </div>
             </div>
           </div>
-          <Toaster richColors />
         </>
       )}
+      <Toaster richColors />
     </>
   );
 };

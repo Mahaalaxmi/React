@@ -24,7 +24,6 @@ const Contact = () => {
       }}
     >
       <div className="relative p-3 flex flex-col md:flex-row rounded-lg shadow-lg w-[90%] md:w-[60%] lg:w-[50%] backdrop-blur-lg border-2 border-black">
-        {/* Left side with image and details */}
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-4">
           <img
             src="https://img.freepik.com/free-photo/business-woman-working-laptop-computer_1150-104.jpg?w=826&t=st=1726895032~exp=1726895632~hmac=8e1d5fd02a2e0765ef4b9f9829b267f5bb3f57e2fe5c2b82f5f62c9d92770847"
@@ -42,7 +41,6 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Right side with the contact form */}
         <div className="w-full md:w-1/2 p-4">
           <h1 className="text-2xl font-bold text-center text-blue-600 mb-4">
             Contact Me
