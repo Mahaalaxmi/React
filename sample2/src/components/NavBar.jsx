@@ -1,4 +1,4 @@
-import { Cross, User2, XIcon } from "lucide-react";
+import { User2, XIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useState, useRef } from "react";
 

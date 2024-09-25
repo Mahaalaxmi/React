@@ -10,6 +10,7 @@ const Projects = () => {
   const fetchprojects = async () => {
     try {
       const { data } = await getProjects();
+      console.log(data);
       setProjectdata(data);
     } catch (error) {
       console.warn(error);
@@ -20,7 +21,9 @@ const Projects = () => {
       });
     }
   };
-  console.log(projectdata);
+
+  const localdata = localStorage.getItem("userEmail");
+  console.log(localdata);
 
   useEffect(() => {
     fetchprojects();
@@ -35,11 +38,12 @@ const Projects = () => {
   return (
     <>
       <div className="w-full h-full flex flex-row flex-wrap gap-8 justify-center items-center">
-        <div className="w-full h-[10%] p-2 flex justify-end items-center px-10">
+        <div className="w-[90%] h-[10%] flex justify-between items-center px-10">
+          <h1 className="font-bold text-3xl text-blue-500">Projects</h1>
           <AddComponent fetchprojects={fetchprojects} />
         </div>
 
-        {projectdata.map((data, index) => (
+        {projectdata?.map((data, index) => (
           <ProjectCard
             title={data.title}
             desc={data.desc}
@@ -47,7 +51,8 @@ const Projects = () => {
             pid={index}
             kid={index + 1}
             cover={data.coverimg}
-            id={data.id}
+            git={data.git}
+            id={data._id}
             link={data.link}
             fetchprojects={fetchprojects}
           />

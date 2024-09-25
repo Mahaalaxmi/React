@@ -1,21 +1,20 @@
 import {
   Check,
-  Eye,
   Github,
   Link,
   MessageCircleWarning,
   Pencil,
-  ThumbsUp,
   Trash,
 } from "lucide-react";
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { deleteProject, editProject } from "../services/api";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 const ProjectCard = ({
   title,
   desc,
   pid,
+  git,
   cover,
   id,
   kid,
@@ -26,6 +25,7 @@ const ProjectCard = ({
   const [descState, setDescState] = useState(desc);
   const [linkState, setLinkState] = useState(link);
   const [coverState, setCoverState] = useState(cover);
+  const [gitState, setGitState] = useState(git);
   const [visible, setvisible] = useState(false);
 
   const handleEdit = async (e) => {
@@ -35,6 +35,7 @@ const ProjectCard = ({
       desc: descState,
       link: linkState,
       coverimg: coverState,
+      git: gitState,
     };
     try {
       const response = await editProject(id, projectdata);
@@ -82,6 +83,8 @@ const ProjectCard = ({
         icon: <MessageCircleWarning />,
       });
     }
+    // localStorage.removeItem("userEmail")
+    localStorage.clear();
   };
   return (
     <>
@@ -107,7 +110,7 @@ const ProjectCard = ({
               </div>
             </a>
             <a
-              href={link}
+              href={git}
               target="_blank"
               className="overflow-x-visible relative w-12 h-12 overflow-y-clip group text-center hover:bg-gray-500/20 rounded-sm hover:border-b-2 hover:border-gray-500"
             >
@@ -157,7 +160,7 @@ const ProjectCard = ({
       {visible && (
         <>
           <div className="h-screen w-screen absolute top-0 left-0 bg-black/20 flex justify-center items-center z-50">
-            <div className=" h-[50%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
+            <div className=" h-[60%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
               <div className="w-full h-[15%] flex flex-row justify-start px-10 items-center border-2 text-blue-500 bg-white text-xl font-bold shadow-sm">
                 <div className="w-1/2">Edit Project</div>
                 <div className="w-1/2 flex justify-end">
@@ -204,6 +207,15 @@ const ProjectCard = ({
                     value={coverState}
                     onChange={(e) => setCoverState(e.target.value)}
                     placeholder="Cover URL"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold"
+                    required
+                  />
+
+                  <input
+                    type="text"
+                    value={gitState}
+                    onChange={(e) => setGitState(e.target.value)}
+                    placeholder="Git"
                     className="p-3 bg-[#f8f8f8] w-full font-bold"
                     required
                   />

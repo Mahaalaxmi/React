@@ -7,7 +7,7 @@ const AddComponent = ({ fetchprojects }) => {
   const descref = useRef(null);
   const linkref = useRef(null);
   const coverref = useRef(null);
-
+  const gitref = useRef(null);
   const handleAdd = async (e) => {
     e.preventDefault();
     const projectdata = {
@@ -15,11 +15,12 @@ const AddComponent = ({ fetchprojects }) => {
       desc: descref.current.value,
       link: linkref.current.value,
       coverimg: coverref.current.value,
+      git: gitref.current.value,
     };
     try {
       const response = await addProject(projectdata);
-      console.log(response.status);
-      if (response.status === 201) {
+      console.log(response);
+      if (response.status === 200) {
         console.log("added");
         toast("Project added !", {
           className:
@@ -51,7 +52,7 @@ const AddComponent = ({ fetchprojects }) => {
       {visible && (
         <>
           <div className="h-screen w-screen absolute top-0 left-0 bg-black/20 flex justify-center items-center z-50">
-            <div className=" h-[50%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
+            <div className=" h-[60%] w-[30%] bg-red z-50 flex flex-col  bg-white  shadow-lg ">
               <div className="w-full h-[15%] flex flex-row justify-start px-10 items-center border-2 text-blue-500 bg-white text-xl font-bold shadow-sm">
                 <div className="w-1/2">Add Project</div>
                 <div className="w-1/2 flex justify-end">
@@ -75,7 +76,7 @@ const AddComponent = ({ fetchprojects }) => {
                     name=""
                     id="title"
                     placeholder="Title"
-                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2 hover:border-b-2 hover:border-purple-200  focus:border-blue-600"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2 hover:border-b-2 hover:border-blue-200  focus:border-blue-600"
                     required
                   />
                   <input
@@ -84,7 +85,7 @@ const AddComponent = ({ fetchprojects }) => {
                     name=""
                     id="desc"
                     placeholder="Desc"
-                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-purple-200 focus:border-blue-600 mb-3"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-blue-200 focus:border-blue-600 mb-3"
                     required
                   />
                   <input
@@ -93,7 +94,7 @@ const AddComponent = ({ fetchprojects }) => {
                     name=""
                     id="Link"
                     placeholder="Project Link"
-                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-purple-200 focus:border-blue-600 mb-3"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-blue-200 focus:border-blue-600 mb-3"
                     required
                   />
                   <input
@@ -102,12 +103,21 @@ const AddComponent = ({ fetchprojects }) => {
                     name=""
                     id="cover"
                     placeholder="Cover URL"
-                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-purple-200 focus:border-blue-600 mb-3"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-blue-200 focus:border-blue-600 mb-3"
+                    required
+                  />
+                  <input
+                    type="text"
+                    ref={gitref}
+                    name=""
+                    id="git"
+                    placeholder="Git"
+                    className="p-3 bg-[#f8f8f8] w-full font-bold outline-none active:outline-none focus:border-b-2  hover:border-b-2 hover:border-blue-200 focus:border-blue-600 mb-3"
                     required
                   />
                   <button
                     type="submit"
-                    className="text-white bg-gradient-to-r from-purple-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-sm text-md px-5 py-2.5 text-center w-full h-[15%] mt-4"
+                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-sm text-md px-5 py-2.5 text-center w-full h-[15%] mt-4"
                   >
                     Add Project
                   </button>
